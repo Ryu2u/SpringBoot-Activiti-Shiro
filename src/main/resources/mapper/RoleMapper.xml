@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryuzu.manage.mapper.RoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ryuzu.manage.entity.Role">
+        <id column="id" property="id" />
+        <result column="description" property="description" />
+        <result column="role" property="role" />
+    </resultMap>
+
+    <select id="findRoleByUsername" resultMap="BaseResultMap">
+        select sys_role.id,
+               sys_role.description,
+               sys_role.role
+        from user,
+             sys_role,
+             sys_user_role
+        where user.id = sys_user_role.uid
+            and sys_role.id = sys_user_role.role_id
+            and user.username = #{username}
+    </select>
+
+</mapper>
