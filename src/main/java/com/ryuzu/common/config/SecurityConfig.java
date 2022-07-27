@@ -6,6 +6,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /**
+ * 由于activiti7默认集成了security
+ * 所以需要配置security,放行所有请求,并且不需要登录验证
+ * 由shiro来处理
  * @author Ryuzu
  * @date 2022/7/26 14:44
  */
